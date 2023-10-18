@@ -1,7 +1,7 @@
 "use strict";
 
 function replaceSpam(inputString) {
-  const lowerCaseInput = inputString.toLowerCase();
+  const lowerCaseInput = inputString.toLowerCase().trim();
   if (lowerCaseInput.includes("spam")) {
     return inputString.replace(/spam/gi, "***");
   }
