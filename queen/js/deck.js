@@ -1,5 +1,6 @@
-class Deck {
-  cards;
+import { Card } from "./card.js";
+
+export class Deck {
   constructor() {
     this.cards = [];
     const values = [
@@ -38,7 +39,12 @@ class Deck {
     }
   }
 
-  draw() {
-    return this.cards.pop();
+  draw(index = 0) {
+    if (index > this.cards.length || index < 0) {
+      throw new Error('Error, please enter a correct one!');
+    }
+    let targetCard = this.cards[index];
+    this.cards.splice(index, 1);
+    return targetCard;
   }
 }
