@@ -4,14 +4,14 @@ let arr = [
   "А роза упала на лапу Азора",
   "Ого",
   "А Собака боса",
-  "Привет, мир",
+  "Привіт, світ",
   "А Собака боса",
-  "Лёша на полке клопа нашёл",
+  "Лєша на полке клопа нашєл",
   "Я — арка края",
 ];
 
 function isPalindrome(str) {
-  str = str.toLowerCase().replace(/[^a-zа-яё]/g, "");
+  str = str.toLowerCase().replace(/[^a-zа-я]/g, "");
   return str === str.split("").reverse().join("");
 }
 
