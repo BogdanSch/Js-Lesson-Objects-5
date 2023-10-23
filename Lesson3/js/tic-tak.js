@@ -1,15 +1,19 @@
 "use strict";
 
 let tick = true;
-function ticker() {
-  if (tick) {
-    document.write("Тік ");
-    tick = false;
-  } else {
-    document.write("Так ");
-    tick = true;
-  }
-}
+let timer = setInterval(ticker, 1000, 10);
+let startDate = new Date();
 
-let timer = setInterval(ticker, 1000);
-// clearInterval(t);
+function ticker(tickTime) {
+  let currentDate = new Date();
+  if (tick) {
+    console.log("Тік ");
+  } else {
+    console.log("Так ");
+  }
+  tick = !tick;
+  let difference = Math.abs(
+    (startDate.getTime() - currentDate.getTime()) / 1000
+  );
+  if (difference >= tickTime) clearInterval(timer);
+}
