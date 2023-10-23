@@ -1,14 +1,25 @@
-class Dictionary {
-  constructor(userWord, translations, language) {
+class Word {
+  constructor(userWord, translations) {
     this.userWord = userWord;
     this.translations = translations;
+  }
+  checkWord(userTranslation) {
+    return this.translations.find(
+      (translation) => translation === userTranslation
+    );
+  }
+}
+
+class Dictionary {
+  constructor(word, language) {
+    this.word = word;
     this.correctGuesses = 0;
     this.mistakeCount = 0;
     this.targetLanguage = language;
   }
 
   getWords() {
-    return this.translations;
+    return this.word.translations;
   }
 
   getMistakenCount() {
@@ -19,8 +30,8 @@ class Dictionary {
     return this.correctGuesses;
   }
 
-  checkWord(word) {
-    const found = this.translations.find((translation) => translation === word);
+  checkWord(translation) {
+    const found = this.word.checkWord(translation);
     if (found) {
       this.correctGuesses++;
       return true;
@@ -48,12 +59,11 @@ class Dictionary {
 }
 
 const dictionary = new Dictionary(
-  "apple",
-  ["яблуко", "apfel", "pomme"],
+  new Word("apple", ["яблуко", "apfel", "pomme"]),
   "ukrainian"
 );
 
-dictionary.checkWord("яблуко"); // Returns true
-dictionary.checkWord("banana"); // Returns false
-dictionary.getCorrectGuesses(); // Returns 1
-dictionary.getMistakenCount(); // Returns 1
+console.log(dictionary.checkWord("яблуко")); // Returns true
+console.log(dictionary.checkWord("banana")); // Returns false
+console.log(dictionary.getCorrectGuesses()); // Returns 1
+console.log(dictionary.getMistakenCount()); // Returns 1
