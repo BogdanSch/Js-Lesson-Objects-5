@@ -5,7 +5,7 @@ function Dog(name, breed, weight) {
   this.breed = breed;
   this.weight = weight;
   let speed = 0;
-  let speedLimit = 0;
+  let speedLimit = 4;
   let age = 0;
 
   this.setAge = function (value) {
@@ -25,10 +25,7 @@ function Dog(name, breed, weight) {
     speed = 0;
   }
   this.changeSpeed = function (targetSpeed) {
-    if(this.weight < 25){
-        speedLimit = 4;
-    }
-    else{
+    if(this.weight > 25){
         speedLimit = 20;
     }
     if(targetSpeed >= 0.5 && targetSpeed <= speedLimit)
