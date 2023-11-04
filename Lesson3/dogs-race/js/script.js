@@ -6,9 +6,9 @@ class DogRaceController {
   constructor(raceDistance = 5) {
     this.raceDistance = raceDistance;
     this.dogs = [
-      new Dog("Dog 1", "Labrador", 30),
-      new Dog("Dog 2", "Poodle", 20),
-      new Dog("Dog 3", "Bulldog", 15),
+      new Dog("Max", "Labrador", 30),
+      new Dog("Bella", "Poodle", 20),
+      new Dog("Rocky", "Bulldog", 15),
     ];
 
     this.startRaceButton = document.querySelector("#raceStartButton");
@@ -31,22 +31,25 @@ class DogRaceController {
       distance -= dog.speed;
       if (distance <= 0) {
         clearInterval(timer);
-        this.displayResult(dog, `${dog.name} finished the race!`);
+        this.displayResult(
+          dog,
+          dog.speed.toFixed(2),
+          `${dog.name} finished the race!`
+        );
       } else {
         dog.changeSpeed(Math.random() * 1.5 + 0.5);
-        this.displayResult(dog, distance);
+        this.displayResult(dog, dog.speed.toFixed(2), distance.toFixed(2));
       }
     }, 1000);
   }
-  finishRace() {}
-  displayResult(dog, message) {
+  displayResult(dog, speed, distance) {
     const newRow = this.raceResultsTable.insertRow();
     newRow.innerHTML = `
             <td>${dog.name}</td>
             <td>${dog.breed}</td>
             <td>${dog.weight}</td>
-            <td>${dog.speed}</td>
-            <td>${message}</td>`;
+            <td>${speed}</td>
+            <td>${distance}</td>`;
   }
 }
 
