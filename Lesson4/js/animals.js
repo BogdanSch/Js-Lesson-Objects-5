@@ -17,13 +17,17 @@ class Cat extends Animal {
   }
 
   run() {
-    console.log(`${this.name} полює.`);
+    console.log(`${this.name} крадеться.`);
   }
 }
 
 class Dog extends Animal {
   constructor(name) {
     super(name);
+  }
+  run() {
+    super.run();
+    console.log(`${this.name} ходить.`);
   }
 }
 
@@ -33,6 +37,7 @@ class Cock extends Animal {
   }
 
   run() {
+    super.run();
     console.log(`${this.name} ходить.`);
   }
 }
@@ -53,6 +58,7 @@ class Elephant extends Animal {
   }
 
   run() {
+    super.run();
     console.log(`${this.name} ступає.`);
   }
 }
